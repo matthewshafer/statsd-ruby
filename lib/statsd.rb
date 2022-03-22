@@ -497,7 +497,7 @@ class Statsd
   private
 
   def send_stats(stat, delta, type, sample_rate=1)
-    if sample_rate == 1 or rand < sample_rate
+    if sample_rate == 1 || rand < sample_rate
       # Replace Ruby module scoping with '.' and reserved chars (: | @) with underscores.
       stat = stat.to_s.gsub('::', delimiter)
       stat.tr!(':|@', '_')
