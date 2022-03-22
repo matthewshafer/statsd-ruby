@@ -499,7 +499,8 @@ class Statsd
   def send_stats(stat, delta, type, sample_rate=1)
     if sample_rate == 1 or rand < sample_rate
       # Replace Ruby module scoping with '.' and reserved chars (: | @) with underscores.
-      stat = stat.to_s.gsub('::', delimiter).tr(':|@', '_')
+      stat = stat.to_s.gsub('::', delimiter)
+      stat.tr!(':|@', '_')
       # in ruby prior to 2.7 nil.to_s returns a new string every time
       # by setting this to an empty string object allocations on older rubies are reduced
       rate = ''
