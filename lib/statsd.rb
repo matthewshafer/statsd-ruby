@@ -297,11 +297,11 @@ class Statsd
     @host = host || '127.0.0.1'
     @port = port || 8125
     self.delimiter = "."
-    @prefix = nil
+    @prefix = ''
     @batch_size = 10
     @batch_byte_size = nil
     @flush_interval = nil
-    @postfix = nil
+    @postfix = ''
     @socket = nil
     @protocol = protocol || :udp
     @s_mu = Mutex.new
